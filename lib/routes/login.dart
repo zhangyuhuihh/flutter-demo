@@ -64,11 +64,12 @@ class _LoginPage extends State<LoginPage> {
                           color: Colors.blue,
                           colorBrightness: Brightness.dark,
                           onPressed: () {
+                            Navigator.pushNamed(context, 'homePage');
                             // 这里的这个context需要注意一下，传的是哪一个context需要注意一下，否则拿不到对应的上下文(context)
-                            if (Form.of(context).validate()) {
-                              //验证通过提交数据
-                              print(_unameController.text);
-                            }
+                            // if (Form.of(context).validate()) {
+                            //   //验证通过提交数据
+                            //   print(_unameController.text);
+                            // }
                           },
                         );
                       },

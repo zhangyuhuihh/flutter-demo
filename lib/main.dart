@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: 'login',
+      initialRoute: 'homePage',
       routes:<String, WidgetBuilder> {
         // "new_page": (context) =>
         //     TipRoute(haha: ModalRoute.of(context).settings.arguments),
         // "/": (context) => new MyHomePage(title: 'Flutter Demo Home Page'),
         'login': (context) => new LoginPage(),
+        'homePage': (context) => new HomePage()
       },
       // onGenerateRoute 路由守卫
     );
