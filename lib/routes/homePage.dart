@@ -167,8 +167,9 @@ class _DeviceSitutation extends State<DeviceSitutation> {
                               ),
                             ),
                             Container(
-                              // padding: EdgeInsets.only(right: 19),
-                              width: 100,
+                              padding: EdgeInsets.only(right: 19),
+                              alignment: Alignment.centerRight,
+                              width: MediaQuery.of(context).size.width - 219,
                               child: Text(
                                 item['value'].toString(),
                                 style: TextStyle(
