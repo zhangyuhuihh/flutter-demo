@@ -9,10 +9,37 @@ class HomePage extends StatefulWidget {
 class _HomePage extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('智能供暖'), centerTitle: true),
+      appBar: AppBar(
+          title: Text('智能供暖'),
+          centerTitle: true,
+          backgroundColor: const Color(0xFF192134)),
       drawer: new MyDrawer(),
       body: Column(
-        children: <Widget>[new DeviceManage(), new EnergyManage()],
+        children: <Widget>[
+          Container(
+            color: const Color(0xFF192134),
+            padding: EdgeInsets.only(left: 16.5),
+            height: 50,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  child: Icon(
+                    Icons.show_chart,
+                    color: Colors.white,
+                  ),
+                ),
+                Container(
+                  child: Text(
+                    '设备及能耗统计',
+                    style: TextStyle(fontSize: 14.5, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          new DeviceManage(),
+          new EnergyManage()
+        ],
       ),
     );
   }
@@ -28,7 +55,10 @@ class _DeviceManage extends State<DeviceManage> {
     return Expanded(
       flex: 1,
       child: Container(
-        color: Colors.red,
+        decoration: BoxDecoration(
+          // borderRadius: BorderRadius.circular(15),
+          color: const Color(0xFF202736),
+        ),
         child: Column(
           children: <Widget>[
             Row(
@@ -36,26 +66,126 @@ class _DeviceManage extends State<DeviceManage> {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    child: Text('设备统计'),
-                    height: 30,
+                    padding: EdgeInsets.only(
+                        left: 18.5, top: 6.5, bottom: 6.5, right: 18.5),
+                    child: Text(
+                      '设备统计',
+                      style: TextStyle(color: Colors.white, fontSize: 14.5),
+                    ),
+                    height: 36,
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: Container(
-                    alignment: Alignment.bottomRight,
+                    alignment: Alignment.centerRight,
                     child: Icon(
-                      Icons.navigate_next,
-                      color: Colors.green,
+                      Icons.arrow_forward,
+                      color: const Color(0xFF98918f),
                     ),
-                    height: 30,
+                    height: 36,
                   ),
                 ),
               ],
             ),
+            Row(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(left: 18.5, top: 5.0, right: 18.5),
+                  child: Text.rich(TextSpan(
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                      children: [
+                        TextSpan(text: '设备总数'),
+                        TextSpan(
+                            text: '201',
+                            style: TextStyle(
+                                fontSize: 16, color: const Color(0xFFE5C195))),
+                        TextSpan(text: ('(台)'))
+                      ])),
+                ),
+              ],
+            ),
+            new DeviceSitutation()
           ],
         ),
       ),
+    );
+  }
+}
+
+class DeviceSitutation extends StatefulWidget {
+  @override
+  _DeviceSitutation createState() => _DeviceSitutation();
+}
+
+class _DeviceSitutation extends State<DeviceSitutation> {
+  List<Map> situtationsList;
+
+  initState() {
+    super.initState();
+    situtationsList = [
+      {'title': '在线', 'value': 190},
+      {'title': '离线数量', 'value': 11},
+      {'title': '工作中数量', 'value': 160},
+      {'title': '休息中数量', 'value': 30}
+    ];
+  }
+
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: Column(
+            children: situtationsList.map((item) {
+              return Row(
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(left: 20, top: 15),
+                        child: Text(
+                          item['title'],
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 18.5, top: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Container(
+                              width: 200,
+                              height: 6,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    const Color(0xFF1A3269),
+                                    const Color(0xFFE5C298)
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              // padding: EdgeInsets.only(right: 19),
+                              width: 100,
+                              child: Text(
+                                item['value'].toString(),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 14),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            }).toList(),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -70,7 +200,7 @@ class _EnergyManage extends State<EnergyManage> {
     return Expanded(
       flex: 1,
       child: Container(
-        color: Colors.blue,
+        color: const Color(0xFF192134),
         child: Row(
           children: <Widget>[
             Text('能耗统计'),
