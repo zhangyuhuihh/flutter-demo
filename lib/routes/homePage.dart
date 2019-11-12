@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import '../widgets/smartDrawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -28,9 +29,7 @@ class _HomePage extends State<HomePage> {
             height: 50,
             child: Row(
               children: <Widget>[
-                Container(
-                  child: Image.asset('images/tongjifenxi.png')
-                ),
+                Container(child: Image.asset('images/tongjifenxi.png')),
                 Container(
                   child: Text(
                     '设备及能耗统计',
@@ -372,21 +371,59 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return SmartDrawer(
+      widthPercent: 0.46,
       // mediaQuery是干什么的
       child: MediaQuery.removePadding(
-          context: context,
+        context: context,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(width: 0.0),
+            color: Color(0xFF1A2234),
+          ),
           child: Column(
             children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.only(top: 38.0),
-                  child: Text('当前登录账号')),
-              Divider(
-                height: 5.0,
+              Container(
+                margin: EdgeInsets.only(top: 63),
+                child: Container(
+                  width: 85,
+                  height: 85,
+                  color: Colors.red,
+                ),
               ),
-              new MenuList()
+              Container(
+                margin: EdgeInsets.only(top: 14, bottom: 20),
+                child: Text(
+                  '当前登录账号',
+                  style: TextStyle(color: Color(0xFFE5FFFFFF)),
+                ),
+              ),
+              Container(
+                height: 5.0,
+                color: Color(0xFF101725),
+              ),
+              new MenuList(),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(bottom: 30),
+                      child: FlatButton(
+                        padding: EdgeInsets.only(left: 23, right: 23),
+                        color: Color(0xFFE5C195),
+                        shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        child: Text('退出登录'),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -400,37 +437,100 @@ class MenuList extends StatelessWidget {
       children: <Widget>[
         Container(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Icon(
-                Icons.flash_on,
-                color: Colors.green,
+              Container(
+                height: 60,
+                padding: EdgeInsets.only(top: 20, bottom: 20, left: 20),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset('images/icon_shebei.png')
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 5.5),
+                      child: Text(
+                        '设备统计',
+                        style: TextStyle(color: Color(0xFFB2FFFFFF)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text('设备统计'),
+              Container(
+                padding: EdgeInsets.only(top: 20, bottom: 20, right: 9),
+                child: Icon(
+                  Icons.arrow_forward,
+                  color: const Color(0xFFB2FFFFFF),
+                ),
+              ),
             ],
           ),
         ),
         Container(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Icon(
-                Icons.flash_on,
-                color: Colors.green,
+              Container(
+                height: 60,
+                padding: EdgeInsets.only(top: 20, bottom: 20, left: 20),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset('images/icon_nenghao.png')
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 5.5),
+                      child: Text(
+                        '能耗统计',
+                        style: TextStyle(color: Color(0xFFB2FFFFFF)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text('能耗统计'),
+              Container(
+                padding: EdgeInsets.only(top: 20, bottom: 20, right: 9),
+                child: Icon(
+                  Icons.arrow_forward,
+                  color: const Color(0xFFB2FFFFFF),
+                ),
+              ),
             ],
           ),
         ),
         Container(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Icon(Icons.grade, color: Colors.green),
-              Text('设备统计'),
+              Container(
+                height: 60,
+                padding: EdgeInsets.only(top: 20, bottom: 20, left: 20),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset('images/icon_guanzhu.png')
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 5.5),
+                      child: Text(
+                        '我的关注',
+                        style: TextStyle(color: Color(0xFFB2FFFFFF)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 20, bottom: 20, right: 9),
+                child: Icon(
+                  Icons.arrow_forward,
+                  color: const Color(0xFFB2FFFFFF),
+                ),
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
