@@ -213,129 +213,135 @@ class EnergyManage extends StatefulWidget {
 
 class _EnergyManage extends State<EnergyManage> {
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(top: BorderSide(color: Color(0xFF202736), width: 0.0)),
-        color: const Color(0xFF202736), // 0xFF192134
-      ),
+    return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFF192134),
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20.0),
-            topLeft: Radius.circular(20.0),
-          ),
+          border: Border(top: BorderSide(color: Color(0xFF202736), width: 0.0)),
+          color: const Color(0xFF202736), // 0xFF192134
         ),
-        child: Column(
-          children: <Widget>[
-            Row(
-              // todo 暂时没搞懂为什么这里的spaceBetween可以起作用
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(left: 18.5, top: 6.5, bottom: 6.5),
-                  child: Text(
-                    '能耗统计',
-                    style: TextStyle(color: Colors.white, fontSize: 14.5),
-                  ),
-                  height: 36,
-                ),
-                Container(
-                  padding: EdgeInsets.only(right: 18.5, top: 6.5, bottom: 6.5),
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: const Color(0xFF98918f),
-                  ),
-                ),
-              ],
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF192134),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20.0),
+              topLeft: Radius.circular(20.0),
             ),
-            Container(
-              padding: EdgeInsets.only(left: 18.5, right: 18.5, top: 6),
-              child: Row(
+          ),
+          child: Column(
+            children: <Widget>[
+              Row(
+                // todo 暂时没搞懂为什么这里的spaceBetween可以起作用
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            '201.02',
-                            style: TextStyle(
-                                color: const Color(0xFFE5C195), fontSize: 20),
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            '当月能耗(W)',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
-                          ),
-                        )
-                      ],
+                    padding: EdgeInsets.only(left: 18.5, top: 6.5, bottom: 6.5),
+                    child: Text(
+                      '能耗统计',
+                      style: TextStyle(color: Colors.white, fontSize: 14.5),
                     ),
+                    height: 36,
                   ),
                   Container(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            '2000.02',
-                            style: TextStyle(
-                                color: const Color(0xFFE5C195), fontSize: 20),
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            '年度能耗(W)',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          // todo 是否可以提取样式
-                          child: Text(
-                            '128.02',
-                            style: TextStyle(
-                                color: const Color(0xFFE5C195), fontSize: 20),
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            '供暖面积(m²)',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
-                          ),
-                        )
-                      ],
+                    padding:
+                        EdgeInsets.only(right: 18.5, top: 6.5, bottom: 6.5),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: const Color(0xFF98918f),
                     ),
                   ),
                 ],
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, left: 18.5, right: 18.5),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: <Widget>[
-                        Text(
-                          '单位(W)',
-                          style: TextStyle(fontSize: 12, color: Colors.white),
-                        )
-                      ],
+              Container(
+                padding: EdgeInsets.only(left: 18.5, right: 18.5, top: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            child: Text(
+                              '201.02',
+                              style: TextStyle(
+                                  color: const Color(0xFFE5C195), fontSize: 20),
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              '当月能耗(W)',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  new LineChartSample4(),
-                ],
+                    Container(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            child: Text(
+                              '2000.02',
+                              style: TextStyle(
+                                  color: const Color(0xFFE5C195), fontSize: 20),
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              '年度能耗(W)',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            // todo 是否可以提取样式
+                            child: Text(
+                              '128.02',
+                              style: TextStyle(
+                                  color: const Color(0xFFE5C195), fontSize: 20),
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              '供暖面积(m²)',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              // height: 122,
-            )
-          ],
+              Container(
+                margin: EdgeInsets.only(top: 10, left: 18.5, right: 18.5),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            '单位(W)',
+                            style: TextStyle(fontSize: 12, color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ),
+                    new LineChartSample4(),
+                  ],
+                ),
+                // height: 122,
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -413,6 +419,7 @@ class MenuList extends StatelessWidget {
   }
 }
 
+// todo改造成statefull组件
 class LineChartSample4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
