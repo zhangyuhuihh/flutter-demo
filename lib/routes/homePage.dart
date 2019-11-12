@@ -29,10 +29,7 @@ class _HomePage extends State<HomePage> {
             child: Row(
               children: <Widget>[
                 Container(
-                  child: Icon(
-                    Icons.show_chart,
-                    color: Colors.white,
-                  ),
+                  child: Image.asset('images/tongjifenxi.png')
                 ),
                 Container(
                   child: Text(
@@ -167,7 +164,8 @@ class _DeviceSitutation extends State<DeviceSitutation> {
                     padding: EdgeInsets.only(left: 20, top: 15),
                     child: Text(
                       item['title'],
-                      style: TextStyle(fontSize: 12, color: Color(0xFF7FFFFFFF)),
+                      style:
+                          TextStyle(fontSize: 12, color: Color(0xFF7FFFFFFF)),
                     ),
                   ),
                   Container(
@@ -339,7 +337,7 @@ class _EnergyManage extends State<EnergyManage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 10, left: 18.5, right: 18.5),
+                margin: EdgeInsets.only(top: 15, left: 18.5, right: 18.5),
                 child: Column(
                   children: <Widget>[
                     Container(
