@@ -163,7 +163,9 @@ class _DeviceSitutation extends State<DeviceSitutation> {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width, // 神器的宽度问题，解决一系列内部宽度问题,抛开正统布局宽度继承因素，曲线救国
+                    width: MediaQuery.of(context)
+                        .size
+                        .width, // 神器的宽度问题，解决一系列内部宽度问题,抛开正统布局宽度继承因素，曲线救国
                     padding: EdgeInsets.only(left: 18.5, top: 4, right: 18.5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,6 +174,9 @@ class _DeviceSitutation extends State<DeviceSitutation> {
                           width: 200,
                           height: 6,
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(3.0),
+                            ),
                             gradient: LinearGradient(
                               colors: [
                                 const Color(0xFF1A3269),
