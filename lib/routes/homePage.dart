@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -163,9 +164,9 @@ class _DeviceSitutation extends State<DeviceSitutation> {
                     ),
                   ),
                   Container(
-                    // width: MediaQuery.of(context)
-                    //     .size
-                    //     .width, // 神器的宽度问题，解决一系列内部宽度问题,抛开正统布局宽度继承因素，曲线救国
+                    width: MediaQuery.of(context)
+                        .size
+                        .width, // 神器的宽度问题，解决一系列内部宽度问题,抛开正统布局宽度继承因素，曲线救国
                     padding: EdgeInsets.only(left: 18.5, top: 4, right: 18.5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -314,10 +315,26 @@ class _EnergyManage extends State<EnergyManage> {
                 ],
               ),
             ),
-            // Container(
-            //   child: Text('图表'),
-            //   // height: 122,
-            // )
+            Container(
+              margin: EdgeInsets.only(top: 10, left: 18.5, right: 18.5),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          '单位(W)',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ),
+                  new LineChartSample4(),
+                ],
+              ),
+              // height: 122,
+            )
           ],
         ),
       ),
@@ -392,6 +409,127 @@ class MenuList extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class LineChartSample4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // const cutOffYValue = 5.0;
+
+    return SizedBox(
+      width: MediaQuery.of(context).size.width - 37, // 总长度减去边距
+      height: 160,
+      child: LineChart(
+        LineChartData(
+          lineTouchData: const LineTouchData(enabled: false),
+          lineBarsData: [
+            LineChartBarData(
+              spots: const [
+                FlSpot(0, 4),
+                FlSpot(1, 3.5),
+                FlSpot(2, 4.5),
+                FlSpot(3, 1),
+                FlSpot(4, 4),
+                FlSpot(5, 6),
+                FlSpot(6, 6.5),
+                FlSpot(7, 6),
+                FlSpot(8, 4),
+                FlSpot(9, 6),
+                FlSpot(10, 6),
+                FlSpot(11, 7),
+              ],
+              isCurved: false,
+              barWidth: 2,
+              colors: [
+                const Color(0xFFE5C195),
+              ],
+              // belowBarData: BarAreaData(
+              //   show: true,
+              //   colors: [Colors.deepPurple.withOpacity(0.4)],
+              //   cutOffY: cutOffYValue,
+              //   applyCutOffY: true,
+              // ),
+              // aboveBarData: BarAreaData(
+              //   show: true,
+              //   colors: [Colors.orange.withOpacity(0.6)],
+              //   cutOffY: cutOffYValue,
+              //   applyCutOffY: true,
+              // ),
+              dotData: const FlDotData(
+                  show: true, dotColor: const Color(0xFFE5C195)),
+            ),
+          ],
+          minY: 0,
+          borderData: FlBorderData(
+            // border: Border.all(
+            //     color: Colors.white, width: 1.0, style: BorderStyle.solid),
+            border: Border(
+              top: BorderSide(width: 0.0, color: Colors.white),
+              left: BorderSide(width: 1.0, color: Colors.white),
+              right: BorderSide(width: 0.0, color: Colors.transparent),
+              bottom: BorderSide(width: 1.0, color: Colors.white),
+            ),
+          ),
+          titlesData: FlTitlesData(
+            bottomTitles: SideTitles(
+                showTitles: true,
+                textStyle: TextStyle(
+                  fontSize: 10,
+                  color: Colors.white,
+                  // fontWeight: FontWeight.bold,
+                ),
+                getTitles: (value) {
+                  switch (value.toInt()) {
+                    case 0:
+                      return '01';
+                    case 1:
+                      return '02';
+                    case 2:
+                      return '03';
+                    case 3:
+                      return '04';
+                    case 4:
+                      return '05';
+                    case 5:
+                      return '06';
+                    case 6:
+                      return '07';
+                    case 7:
+                      return '08';
+                    case 8:
+                      return '09';
+                    case 9:
+                      return '10';
+                    case 10:
+                      return '11';
+                    case 11:
+                      return '12';
+                    default:
+                      return '';
+                  }
+                }),
+            leftTitles: SideTitles(
+              showTitles: true,
+              textStyle: TextStyle(
+                fontSize: 10,
+                color: Colors.white,
+                // fontWeight: FontWeight.bold,
+              ),
+              getTitles: (value) {
+                return '${value + 0.5}';
+              },
+            ),
+          ),
+          gridData: FlGridData(
+            show: true,
+            // checkToShowHorizontalGrid: (double value) {
+            //   return value == 1 || value == 6 || value == 4 || value == 5;
+            // },
+          ),
+        ),
+      ),
     );
   }
 }
