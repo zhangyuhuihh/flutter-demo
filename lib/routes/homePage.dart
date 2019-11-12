@@ -110,12 +110,19 @@ class _DeviceManage extends State<DeviceManage> {
                   child: Text.rich(TextSpan(
                       style: TextStyle(color: Colors.white, fontSize: 12),
                       children: [
-                        TextSpan(text: '设备总数'),
                         TextSpan(
-                            text: '201',
-                            style: TextStyle(
-                                fontSize: 16, color: const Color(0xFFE5C195))),
-                        TextSpan(text: ('(台)'))
+                            text: '设备总数',
+                            style: TextStyle(color: Color(0xFF7FFFFFFF))),
+                        TextSpan(
+                          text: '201',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: const Color(0xFFE5C195),
+                              fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                            text: ('(台)'),
+                            style: TextStyle(color: Color(0xFF7FFFFFFF)))
                       ])),
                 ),
               ],
@@ -160,7 +167,7 @@ class _DeviceSitutation extends State<DeviceSitutation> {
                     padding: EdgeInsets.only(left: 20, top: 15),
                     child: Text(
                       item['title'],
-                      style: TextStyle(fontSize: 12, color: Colors.white),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF7FFFFFFF)),
                     ),
                   ),
                   Container(
@@ -190,7 +197,10 @@ class _DeviceSitutation extends State<DeviceSitutation> {
                           alignment: Alignment.centerRight,
                           child: Text(
                             item['value'].toString(),
-                            style: TextStyle(color: Colors.white, fontSize: 14),
+                            style: TextStyle(
+                                color: Color(0xFFB2FFFFFF),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
                           ),
                         )
                       ],
@@ -263,14 +273,16 @@ class _EnergyManage extends State<EnergyManage> {
                             child: Text(
                               '201.02',
                               style: TextStyle(
-                                  color: const Color(0xFFE5C195), fontSize: 20),
+                                  color: const Color(0xFFE5C195),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(
                             child: Text(
                               '当月能耗(W)',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              style: TextStyle(
+                                  color: Color(0xFF7FFFFFFF), fontSize: 12),
                             ),
                           )
                         ],
@@ -283,14 +295,18 @@ class _EnergyManage extends State<EnergyManage> {
                             child: Text(
                               '2000.02',
                               style: TextStyle(
-                                  color: const Color(0xFFE5C195), fontSize: 20),
+                                  color: const Color(0xFFE5C195),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(
                             child: Text(
                               '年度能耗(W)',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              style: TextStyle(
+                                color: Color(0xFF7FFFFFFF),
+                                fontSize: 12,
+                              ),
                             ),
                           )
                         ],
@@ -304,14 +320,16 @@ class _EnergyManage extends State<EnergyManage> {
                             child: Text(
                               '128.02',
                               style: TextStyle(
-                                  color: const Color(0xFFE5C195), fontSize: 20),
+                                  color: const Color(0xFFE5C195),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                           Container(
                             child: Text(
                               '供暖面积(m²)',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              style: TextStyle(
+                                  color: Color(0xFF7FFFFFFF), fontSize: 12),
                             ),
                           )
                         ],
@@ -330,7 +348,8 @@ class _EnergyManage extends State<EnergyManage> {
                         children: <Widget>[
                           Text(
                             '单位(W)',
-                            style: TextStyle(fontSize: 12, color: Colors.white),
+                            style: TextStyle(
+                                fontSize: 12, color: Color(0xFF7FFFFFFF)),
                           )
                         ],
                       ),
@@ -473,10 +492,10 @@ class LineChartSample4 extends StatelessWidget {
             // border: Border.all(
             //     color: Colors.white, width: 1.0, style: BorderStyle.solid),
             border: Border(
-              top: BorderSide(width: 0.0, color: Colors.white),
-              left: BorderSide(width: 1.0, color: Colors.white),
+              top: BorderSide(width: 0.0, color: Color(0xffF7aaaaaa)),
+              left: BorderSide(width: 0.5, color: Color(0xffF7eeeeee)),
               right: BorderSide(width: 0.0, color: Colors.transparent),
-              bottom: BorderSide(width: 1.0, color: Colors.white),
+              bottom: BorderSide(width: 0.5, color: Color(0xffF7eeeeee)),
             ),
           ),
           titlesData: FlTitlesData(
@@ -484,7 +503,7 @@ class LineChartSample4 extends StatelessWidget {
                 showTitles: true,
                 textStyle: TextStyle(
                   fontSize: 10,
-                  color: Colors.white,
+                  color: Color(0xFF7FFFFFFF),
                   // fontWeight: FontWeight.bold,
                 ),
                 getTitles: (value) {
@@ -521,7 +540,7 @@ class LineChartSample4 extends StatelessWidget {
               showTitles: true,
               textStyle: TextStyle(
                 fontSize: 10,
-                color: Colors.white,
+                color: Color(0xFF7FFFFFFF),
                 // fontWeight: FontWeight.bold,
               ),
               getTitles: (value) {
@@ -531,6 +550,12 @@ class LineChartSample4 extends StatelessWidget {
           ),
           gridData: FlGridData(
             show: true,
+            getDrawingVerticalGridLine: (value) {
+              return const FlLine(
+                color: Color(0xFF7F232C3E),
+                strokeWidth: 1,
+              );
+            },
             // checkToShowHorizontalGrid: (double value) {
             //   return value == 1 || value == 6 || value == 4 || value == 5;
             // },
